@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <title>Fullscreen Responsive Register Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script>
+
+    $(document).ready(function(){
+
+	    var counter = 2;
+		
+	    $("#addButton").click(function () {
+				
+			if(counter>10){
+		        alert("Only 10 textboxes allow");
+		        return false;
+		    }   
+			
+			var newTextBoxDiv = $(document.createElement('div')).attr("id", 'TextBoxDiv' + counter);
+                newTextBoxDiv.after().html('<label>Product '+ counter + ' : </label>' +
+				'<input type="text" name="textbox' + counter + 
+				'" id="textbox' + counter + '" value=""  required>');
+            
+			newTextBoxDiv.appendTo("#TextBoxesGroup");
+				
+		    counter++;
+	    });
+
+	    $("#removeButton").click(function () {
+		    if(counter==2){
+		        alert("No more textbox to remove");
+		        return false;
+		    }   
+	        counter--;
+			
+	        $("#TextBoxDiv" + counter).remove();
+		});
+		
+		$("#getButtonValue").click(function () {
+		
+			var msg = '';
+			for(i=1; i<counter; i++){
+				msg += "\n Product " + i + " : " + $('#textbox' + i).val();
+			}
+		   	alert(msg);
+		});
+		
+  });
+         $(function() {
+$( "#podate" ).datepicker();
+});
+        </script>
+    </head>
+
+    <body>
+
+        
+
+        <div class="register-container container">
+            <div class="row">
+                <div class="register span6">
+                    <form action="" method="post">
+                        <h2>Add New <span class="red"><strong>Order</strong></span></h2>
+                        <label for="firstname">Client Name</label>
+                        <input type="text" id="name" name="Name" placeholder="Enter client name">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Automatically retrived" disabled>
+                        <label for="ponumber">PO number</label>
+                        <input type="text" id="ponumber" name="ponumber" placeholder="Enter Po number">
+                        <label for="podate">PO Date</label>
+                        <input type="date" id="podate" name="podate" placeholder="Enter Po date">
+<div id='TextBoxesGroup'>
+	<div id="TextBoxDiv1">
+	<input type='text' id='textbox1' required>
+	</div>
+</div>
+<input type='button' value='Add Button' id='addButton'>
+<input type='button' value='Remove Button' id='removeButton'>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Javascript -->
+       
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+    </body>
+
+</html>
+
